@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1710774755.8717 "Assignment1_23.tex" "Assignment1_23.pdf" "Assignment1_23" 1710774756.57152 0
+["pdflatex"] 1710778210.01935 "Assignment1_23.tex" "Assignment1_23.pdf" "Assignment1_23" 1710778210.71267 0
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -52,8 +52,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709057600.00111 5472569 99e72973af7bd41132687409b8c9c95e ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709057668 8220607 9d3f4c655ae92d434ef2ae8ba30248a9 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Assignment1_23.aux" 1710774756.51945 155 7e1a2cf20494b10d791210b8c42d94bc "pdflatex"
-  "Assignment1_23.tex" 1710774755.63364 3635 019105391a2b07d575214b9a5856b6de ""
+  "Assignment1_23.aux" 1710778210.66083 132 4a260024c72d45b6eba469fdd16bf7b8 "pdflatex"
+  "Assignment1_23.tex" 1710778209.78237 3685 b20c690f7f4213fb807f59a7ac8b1c73 ""
   (generated)
   "Assignment1_23.aux"
   "Assignment1_23.log"

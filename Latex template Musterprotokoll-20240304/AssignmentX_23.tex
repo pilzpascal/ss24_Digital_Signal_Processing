@@ -91,35 +91,36 @@
 % Don't number sections
 \setcounter{secnumdepth}{0}
 
+% prints a predefined preamble
+% done this so that we don't have all the code later in the file
+\newcommand{\printpreamble}{
+  \pagestyle{plain}
+  \thispagestyle{empty}
+  \noindent
+  \begin{minipage}[b][4cm]{1.0\textwidth}  
+  \begin{center}
+  \begin{bf} 
+  \begin{large} Digital Signal Processing SS 2024 -- Exercise~1\end{large} \\
+  \vspace{0.3cm}
+  \begin{Large} Digital Signal Processing Tutorial  \end{Large} \\
+  \vspace{0.3cm}
+  \end{bf}
+  \begin{large} 
+  Group 23\\
+  Aaron Zettler, 12105021\\
+  Pascal Pilz, 12111234\\
+  \end{large} 
+  \end{center}
+  \end{minipage}
+  
+  \noindent \rule[0.8em]{\textwidth}{0.12mm}\\[-0.5em]
+}
 
 %% Beginning of the text
+%=======================================================================================
 
 \begin{document}
-%\selectlanguage{austrian}
-\pagestyle{plain}
-
-
-%===  This is the header section ============================================================
-\thispagestyle{empty}
-\noindent
-\begin{minipage}[b][4cm]{1.0\textwidth}  
-\begin{center}
-\begin{bf} 
-\begin{large} Digital Signal Processing SS 24 -- Exercise~X\end{large} \\
-\vspace{0.3cm}
-\begin{Large} Überschrift der Aufgabe - Musterprotokoll  \end{Large} \\
-\vspace{0.3cm}
-\end{bf}
-\begin{large} 
-Group 23\\
-Aaron Zettler, 12105021\\
-Pascal Pilz, 12111234\\
-\end{large} 
-\end{center}
-\end{minipage}
-
-\noindent \rule[0.8em]{\textwidth}{0.12mm}\\[-0.5em]
-%=======================================================================================
+\printpreamble
 
 
 
