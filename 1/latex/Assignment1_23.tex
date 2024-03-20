@@ -228,6 +228,41 @@ c9 = 34
 \end{aufgabe}
 
 \begin{aufgabe}{} % Exercise 4
+  We need to find out whether
+  \begin{align*}
+    &\text{a)} \ y(t) = \left( x(t) \right)^2
+    &&\text{b)} \ y(t) = x(t) \cdot \sin{(\Omega_0 t)}
+  \end{align*}
+  are linear and time invariant.
+
+  \begin{enumerate}
+    \item Let $y(t) = \left( x(t) \right)^2$.
+    \begin{enumerate}
+
+      \item \textbf{Linearity.} It is easy to see that \underline{the system is not linear}:
+      $$
+      \left( \alpha x(t) \right)^2
+      = \alpha^2 \left( x(t) \right)^2
+      = \alpha^2 y(t)
+      \neq \alpha y(t).
+      $$
+
+      \item \textbf{Time invariance.} Let $y_1(t) = \left( x(t-\tau) \right)^2$ be the system in which input is delayed, and let $y_2(t) = y(t-\tau)$ be the system in which the output is delayed. Since $y_1 = \left( x(t-\tau) \right)^2 = y(t-\tau) = y_2$, we can see that \underline{the system is time invariant}.
+
+    \end{enumerate}
+
+    \item Let $y(t) = x(t) \cdot \sin{(\Omega_0 t)}$.
+    \begin{enumerate}
+
+      \item \textbf{Linearity.} Let $y_1(t) = \left(\alpha x_1(t) + \beta x_2(t)\right) \sin{(\Omega_0 t)}$, and let $y_2(t) = \alpha x_1(t) \sin{(\Omega_0 t)} + \beta x_2(t) \sin{(\Omega_0 t)}$. Then we can see that
+      $$
+      y_1(t) = \left(\alpha x_1(t) + \beta x_2(t)\right) \sin{(\Omega_0 t)} = \alpha x_1(t) \sin{(\Omega_0 t)} + \beta x_2(t) \sin{(\Omega_0 t)} = y_2(t).
+      $$
+      Therefore, \underline{the system is linear}.
+
+      \item \textbf{Time invariance.} Let $y_1(t) = x(t-\tau) \sin{(\Omega_0 t)}$ be the system in which the input is delayed, and let $y_2(t) = y(t-\tau)$ be the system in which the output is delayed. Since $y_1 = x(t-\tau) \sin{(\Omega_0 t)} \neq x(t-\tau) \sin{(\Omega_0 (t-\tau))} = y(t-\tau) = y_2$, we can see that \underline{the system in not time invariant}.
+    \end{enumerate}
+  \end{enumerate}
 
 \end{aufgabe}
 
