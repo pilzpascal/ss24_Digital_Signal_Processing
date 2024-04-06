@@ -71,6 +71,7 @@
 \stepcounter{theaufgabe}\hspace{2ex}\end{nopagebreak}}
   {\par\pagebreak[2]}
 
+
 % Innerhalb der Aufgaben erfolgt die weitere Unterteilung mittels einer
 % enumerate Umgebung, die allerdings a), b),... zaehlen soll.
 \renewcommand{\labelenumi}{\alph{enumi})}
@@ -123,7 +124,7 @@
 \begin{document}
 \printpreamble
 
-\begin{aufgabe}{} % Exercise 1
+\begin{aufgabe}{} % Exercise 1 ---------------------------------------------------------
 
   We have three complex numbers given:
   \begin{align*}
@@ -219,15 +220,134 @@ c9 = 34
 
 \end{aufgabe}
 
+\pagebreak
 \begin{aufgabe}{} % Exercise 2
 
+  We need to prooof the following relation (Fourier transform pair for the cosine wave) \\
+
+  \quad \(x(t)=\hat{X} \cos \left(2 \pi f_0 t\right) \leftrightarrow X(f)
+              =\frac{\hat{X}}{2} \delta\left(f-f_0\right)+\frac{\hat{X}}{2} \delta\left(f+f_0\right)\)
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    We use Eulers formula to express the cosine in the time domain as sum of complex exponents.
+  
+    \begin{itemize}
+    \item
+      For this we use the formula for the cosine wave from (DSP\_2.pdf, page 5) 
+      
+      \(s(t)=\hat{s} \cos \left(2 \pi f_0 t+\varphi_0\right)
+            =\frac{\hat{s}}{2}\left(e^{j\left(\omega_0 t+\varphi_0\right)}+e^{-j\left(\omega_0 t+\varphi_0\right)}\right)\)
+    
+      \item
+      And we get: 
+      
+      \(x(t)=\hat{X} \cos \left(2 \pi f_0^t t\right)
+            =\frac{\hat{X}}{2} e^{j 2 \pi f_0 t}+\frac{\hat{X}}{2} e^{-j 2 \pi f_0 t}\)
+    
+    \end{itemize}
+  \item
+    We express the Fourier Transform using (DSP\_2.pdf, page 38).
+  
+    \begin{itemize}
+    \item
+      The Fourier Transform of a complex exponential function is a delta function. 
+      
+      \(x(t)=\hat{X} e^{j 2 \pi f_0 t} \quad \circ-\bullet \quad X(f)
+            =\hat{X} \delta\left(f-f_0\right)\)
+    
+    \end{itemize}
+  \item
+    From 1. and 2. we get: 
+    
+    \(\implies X(f)=\frac{\hat{X}}{2} \delta\left(f-f_0\right)+\frac{\hat{X}}{2} \delta\left(f+f_0\right)\) \qquad q.e.d
+  
+  \end{enumerate}
+  
+  Add a diagram of \(X(f)\) in the report (draw the real and imaginary part of \(X(f)\) in the same diagram). \\
+  
+  \includegraphics[scale=0.5]{../Ex02.jpg}
+
 \end{aufgabe}
 
-\begin{aufgabe}{} % Exercise 3
+\pagebreak
+\begin{aufgabe}{} % Exercise 3 ---------------------------------------------------------------------
+  Given are two sines according to the following formula: 
+  
+  \qquad \(x_i(t)=\sin \left(2 \pi f_i t\right) \text {, with } i \in\{1,2\}\) 
+  with 
+  \qquad \(f_1=1 \mathrm{~Hz}\) and \(f_2=3 \mathrm{~Hz}\).
 
+  All two sines are time delayed by \(\tau=0.1 \mathrm{~s}\) to yield 
+  
+  \qquad \(y_i(t)=\sin \left(2 \pi f_i(t-0.1)\right)\)
+  
+  This corresponds to a phase shift. Thus, the delayed sines may also be written as 
+  
+  \qquad \(y_i(t)=\sin \left(2 \pi f_i t+\phi_i\right)\)
+  
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \item
+    We have to calculate the phase shifts \(\phi_i\) for each sine and verify that this corresponds to the ``Shift Theorem''
+  \end{enumerate}
+  
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    Calculate the phase shifts \(\phi_i\)
+  
+    \begin{itemize}
+    \item
+      We know that: 
+      
+      \qquad \(\sin \left(2 \pi f_i(t-\tau)\right) = \sin \left(2 \pi f_i t+\phi_i\right)\)
+
+    \item
+      So: 
+
+      \qquad \(2 \pi f_i(t-\tau) = 2 \pi f_i t+\phi_i\) 
+      
+      \qquad \(\implies \phi_i= 2 \pi f_i t - 2 \pi f_i t \tau - 2 \pi f_i t = 2 \pi f_i t \tau\)
+
+    \item
+      So we get: 
+      
+      \qquad \(\phi_1=-2 \pi \cdot 1 \cdot 0.1 = - 0.2\pi\) 
+      
+      \qquad \(\phi_2=-2 \pi \cdot 3 \cdot 0.1 = -0.6\pi\)
+
+    \end{itemize}
+  \item
+    Verify that this corresponds to the ``Shift Theorem'' of the Fourier Transform
+  
+    \begin{itemize}
+    \item
+      We use the formula for the ``Shift Theorem'' (DSP\_2.pdf, page 41) 
+      
+      \qquad \(x(t-T)\) \(\circ-\bullet\) \(X(f) e^{-j 2 \pi f T}\)
+
+    \item
+      So, since \(\phi_i= 2 \pi f_i t \tau\), we get 
+      
+      \qquad \(x(t-\tau)\) \(\circ-\bullet\) \(X(f) e^{-j 2 \pi f \tau} = X(f) e^{-j\phi_i}\) q.e.d
+
+    \end{itemize}
+  \end{enumerate}
+  
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \item
+    For both sines in separated plots: Plot the original signal, the time delayed signal and the phase shifted signal. Since the latter two are identical, show this by plotting the first with a solid line and the overlaid one in a different colour with a dashed line. Plot each signal from 0 to 1s. In Matlab use the following time-vector: \(t=0: 0.001: 1\).
+  \end{enumerate}
+  
+  \includegraphics[scale=0.5]{../Ex03.jpg}
 \end{aufgabe}
 
-\begin{aufgabe}{} % Exercise 4
+\pagebreak
+\begin{aufgabe}{} % Exercise 4 --------------------------------------------------------------------
   We need to find out whether
   \begin{align*}
     &\text{a)} \ y(t) = \left( x(t) \right)^2
