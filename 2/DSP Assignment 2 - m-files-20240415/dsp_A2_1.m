@@ -22,5 +22,5 @@ stem(n, x2);
 xlabel('n');
 ylabel('x_2[n]');
 
-
+help("stem")
 
