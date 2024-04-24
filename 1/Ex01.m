@@ -1,5 +1,5 @@
 c1 = -5 + 3j
-c2 = sqrt(2)/2 * exp((3j*pi)/4)
+c2 = sqrt(2)/2 * exp(-(3j*pi)/4)
 c3 = 1/sqrt(2) + 1j/sqrt(2)
 
 c4 = c1 + c2

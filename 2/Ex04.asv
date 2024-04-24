@@ -18,7 +18,7 @@ function y = u(n)
 end
 
 function y = x(n)
-    y = ((0.8).^abs(n)) .* (u(n+10) - u(n-11));
+    y = ((0.8).^abs(n)) .* (step(n+10) - step(n-11));
 end
 
 function X = dtft(x, n, w)

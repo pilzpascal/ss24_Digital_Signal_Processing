@@ -157,30 +157,30 @@
 
   \begin{enumerate}
     \item See \texttt{Ex04.m} for the full code, here I show only the function \texttt{dtft}:
-    \begin{lstlisting}
+    \begin{lstlisting}[style=Matlab-editor]
 function X = dtft(x, n, w)
-  % DTFT Computes Discrete-time Fourier transform
-  % @param    x: finite duration sequence over n
-  % @param    n: sample position vector
-  % @param    w: frquency location vector
-  % @return   X: DTFT values computed at w frequencies
+    % DTFT Computes Discrete-time Fourier transform
+    % @param    x: finite duration sequence over n
+    % @param    n: sample position vector
+    % @param    w: frquency location vector
+    % @return   X: DTFT values computed at w frequencies
 
-  x_vals = x(n);
-  X = x_vals * exp(-1j .* n' * w);
+    X = x * exp(-1j .* n' * w);
+
 end
     \end{lstlisting}
     We call the function via \texttt{X = dtft(@x, n, w)}, where
     \begin{itemize}
       \item \texttt{x(n) = ((0.8).\string^abs(n)) .* (u(n+10) - u(n-11))} with \texttt{u(n) = 1.*(n>=0)}
-      \item \texttt{n = -15:15}
-      \item \texttt{w = linspace(-pi, pi, 1000)}
+      \item \texttt{n = -10:10}
+      \item \texttt{w = linspace(Omega * -pi, Omega * pi, 1000)} for \texttt{Omega = 1}
     \end{itemize}
 
-    \item What I can observe on the y-axis of the phase response plot is that the phase response for the settings described above is very small, in fact less than $6 \times 10^{-15}$.
+    \item What I can observe on the y-axis of the phase response plot is that the phase response for the settings described above is very small, in fact less than $10^{-14}$.
     
     \includegraphics[width=0.9\textwidth]{../Ex04_b.png}
 
-    \item If we change \texttt{w} from \texttt{w = linspace(-pi, pi, 1000)} to \texttt{w = linspace(-5*pi, 5*pi, 1000)}, we can see that the magnitude response has peaks and troughs at multiples of $\pi$. We can also see that the phase response seems to be mirrored and flipped around the y-axis (graphic on next page).
+    \item If we change \texttt{Omega} from \texttt{Omega = 1} to \texttt{Omega = 5}, we can see that the magnitude response has peaks and troughs at multiples of $\pi$. We can also see that the phase response seems to be mirrored and flipped around the y-axis (graphic on next page).
     
     \includegraphics[width=0.9\textwidth]{../Ex04_c.png}
 
