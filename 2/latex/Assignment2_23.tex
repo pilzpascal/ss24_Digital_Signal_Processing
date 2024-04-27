@@ -125,15 +125,86 @@
 
 \begin{aufgabe}{} % Exercise 1 ---------------------------------------------------------
 
+  \begin{enumerate}
+    \item[(a)] We plot the discrete time signals in Matlab
+    \begin{align*}
+    x_1[n] &= -4 \delta[n+3]+4 \delta[n]-\delta[n-3]+2 \delta[n-7] & \text{for } -5 \leq n \leq 10 \\
+    x_2[n] &= e^{-0.31 n} & \text{for } -5 \leq n \leq 10 \\
+    x_3[n] &= 3 \sin \left(2 \pi \frac{3.5}{64} n\right) & \text{for } 0 \leq n \leq 256 \\
+    x_4[n] &= -\cos \left(\frac{9}{64} n\right) & \text{for } 0 \leq n \leq 256
+    \end{align*}
+    
+    \includegraphics[width=0.7\textwidth]{../Ex01_a.png}
+    
+    \item[(b)] The normalized angular frequency $\Omega$: 
+    For $x_3[n]$: $\Omega_{x3} = 0.3436$ and for $x_4[n]$: $\Omega_{x4} = 0.1406$:   
+    
+    \item[(c)] The signals $x_3[n]$ and $x_4[n]$ are periodic with fundamental periods $T_{x3} = 18.2857$ \\
+               and $T_{x4} = 44.6804$, respectively.
+    
+    \item[(d)] The powers for the periodic signals $x_3[n]$ and $x_4[n]$ are $P_{x3} = 4.5658$ and $P_{x4} = 0.4925$.
+    
+    \item[(e)] The energies according to $W=\sum_{n=-\infty}^{\infty}|x[n]|^2$ for these time-limited signals  \\
+               $W_{x1} = 37$, $W_{x2} = 48.0394$, $W_{x3} = 1152$ and $W_{x4} = 128.9565$.
+    
+    \item[(f)] All signal powers of (d) and signal energies of (e) in a single table.
+    \begin{table}[htbp]
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            Signal & Power ($P$) & Energy ($W$) \\
+            \hline
+            $x_1[n]$ & X & 37 \\
+            $x_2[n]$ & X & 48.0394 \\
+            $x_3[n]$ & 4.5658 & 1152 \\
+            $x_4[n]$ & 0.4925 & 128.9565 \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{enumerate}
+
+  
+
 \end{aufgabe} \pagebreak
-
-
 
 \begin{aufgabe}{} % Exercise 2 ---------------------------------------------------------
+  The signal $x[n]=(3,-1,2,0,1)$ at sample times $n=(0,1,2,3,4)$ is the input to an LTI system with impulse response $h[n]=(2,3,4,1)$ at sample times $n=(0,1,2,3)$.
+  \begin{enumerate}
+    \item[(a)] We calculate the length of the output signal $y[n]$: \bigskip
+    \begin{enumerate}
+      \item We know (DSP\_04 page 15): \\
+      If $x[n]$ and $h[n]$ have finite lengths $N_x$ and $N_h$ respectively, \\
+      then the length of the output signal $y[n]$ is given by $N_y=N_x+N_h-1$. \bigskip
 
+      \item So with $N_x=5$ and $N_h=4$ we get: $N_y=5+4-1=8$.
+
+    \end{enumerate}
+
+    \item[(b)] We calculate the output signal $y[n]$ manually:
+
+    \begin{enumerate}
+      \item We know the formula for convolution (DSP\_04 page 17): $y[n] = \sum_{i=0}^{\infty} x[i] \cdot h[n-i]$
+
+      \item Given $x[n] = (3, -1, 2, 0, 1)$ \& $h[n] = (2, 3, 4, 1)$, we find the output signal $y[n]$ for each $n$:
+
+      \begin{align*}
+        \text{For n=0:}  &\quad y[0] = x[0] \cdot h[0] = 3 \cdot 2 = 6 \\
+        \text{For n=1:}  &\quad y[1] = x[0] \cdot h[1] + x[1] \cdot h[0] = 3 \cdot 3 + (-1) \cdot 2 = 7 \\
+        \text{For n=2:}  &\quad y[2] = x[0] \cdot h[2] + x[1] \cdot h[1] + x[2] \cdot h[0] \\
+                         &\quad = 3 \cdot 4 + (-1) \cdot 3 + 2 \cdot 2 = 12 - 3 + 4 = 13 \\
+        \text{For n=3:}  &\quad y[3] = x[0] \cdot h[3] + x[1] \cdot h[2] + x[2] \cdot h[1] + x[3] \cdot h[0] \\
+                         &\quad = 3 \cdot 1 + (-1) \cdot 4 + 2 \cdot 3 + 0 \cdot 2 = 3 - 4 + 6 + 0 = 5 \\
+        \text{For n=4:}  &\quad y[4] = x[1] \cdot h[3] + x[2] \cdot h[2] + x[3] \cdot h[1] + x[4] \cdot h[0] \\
+                         &\quad = (-1) \cdot 1 + 2 \cdot 4 + 0 \cdot 3 + 1 \cdot 2 = -1 + 8 + 0 + 2 = 9 \\
+        \text{For n=5:}  &\quad y[5] = x[2] \cdot h[3] + x[3] \cdot h[2] + x[4] \cdot h[1] = 2 \cdot 1 + 0 \cdot 4 + 1 \cdot 3 = 2 + 0 + 3 = 5 \\
+        \text{For n=6:}  &\quad y[6] = x[3] \cdot h[3] + x[4] \cdot h[2] = 0 \cdot 1 + 1 \cdot 4 = 0 + 4 = 4 \\
+        \text{For n=7:}  &\quad y[7] = x[4] \cdot h[3] = 1 \cdot 1 = 1 \\
+    \end{align*}
+    
+    \item So, the output signal $y[n]$ is $(6, 7, 13, 5, 9, 5, 4, 1)$.
+    \end{enumerate}
+  \end{enumerate}
 \end{aufgabe} \pagebreak
-
-
 
 \begin{aufgabe}{} % Exercise 3 ---------------------------------------------------------
 
@@ -150,8 +221,6 @@
   \end{enumerate}
 
 \end{aufgabe} \pagebreak
-
-
 
 \begin{aufgabe}{} % Exercise 4 ---------------------------------------------------------
 
