@@ -162,16 +162,38 @@ with $f_1 = 4 \text{kHz}$ and $f_2 = 6\text{kHz}$. The signal is sampled with a 
   \end{enumerate}
 \end{aufgabe} \pagebreak
 
+
 \begin{aufgabe}{} % Exercise 2 ---------------------------------------------------------
+We are given the spectrum $X ( f )$ of an analogue signal $x ( t )$:
+  \begin{enumerate}
+    \item Draw the real and imaginary parts of the spectrum $X ( f )$  \\
 
-\end{aufgabe} \pagebreak
+      We have 2 Impulses with Magnitude $\frac{\pi}{2}$ at $-5$ \& $5 \mathrm{kHz}$ \\
+      We use that $X(f)=|X(f)| \cdot e^{j \phi_x(f)}=|X(f)| \cdot\left(\cos \left(\phi_x(f)\right)+j \sin \left(\phi_x(f)\right)\right.$  \\
 
-\begin{aufgabe}{} % Exercise 3 ---------------------------------------------------------
+      Since we have $\phi_x(f)= \pm \frac{\pi}{2}$ we get that $\cos \left(\phi_x(f)\right)=\cos \left( \pm \frac{\pi}{2}\right)=0$  \\
+      $\Rightarrow$ The real parts of the spectrum are $0$ \\
 
-\end{aufgabe} \pagebreak
+      And we get that $\sin \left(\phi_x(r)\right)=\sin \left( \pm \frac{\pi}{2}\right)= \pm 1$ \\
+      $\Rightarrow$ The imaginary part is $-|X(f)|$ for the first part and $+|X(f)|$ for the second part \\
+      
+      \begin{center}
+        \begin{figure}[H]
+          \includegraphics[width=0.5\textwidth]{../Ex02_a}
+          \label{fig:1a}
+          \caption{real and imaginary parts}
+        \end{figure}
+      \end{center}
 
-\begin{aufgabe}{} % Exercise 4 ---------------------------------------------------------
-
+    \item $x(t)$ is sampled with 8kHz to yield the discrete time signal $x [ n ]$ Draw the spectrum of $x [ n ]$ from $- f_{s}$ to $f_{s}$ and indicate the baseband.  \\
+    \begin{center}
+        \begin{figure}[H]
+          \includegraphics[width=0.5\textwidth]{../Ex02_b}
+          \label{fig:1a}
+          \caption{Spectrum of $x [ n ]$}
+        \end{figure}
+      \end{center}
+  \end{enumerate}
 \end{aufgabe} \pagebreak
 
 \end{document}
