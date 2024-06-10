@@ -127,14 +127,85 @@
 \printpreamble
 
 \begin{aufgabe}{} % Exercise 1 ---------------------------------------------------------
+
+  We have the analog signal
+  $$
+  x(t) = 1 + 0.5 \cos{(2 \pi f_1 t)} + 2 \sin{(2 \pi f_2 t)} + \sin{(2 \pi f_3 t)},
+  $$
+  with $f_1 = 2kHz$, $f_2 = 4kHz$, $f_3 = 6kHz$.
+
+  \begin{enumerate}
+    \item We sketch the Fourier transform of $x(t)$ and plot the analog signal $x(t)$ in Matlab using a timevector t = 0:1e-6:1e-3.
+    \begin{center}
+      \includegraphics[width=0.4\textwidth]{../Ex01_a.png}
+    \end{center}
+
+    \item c) We sample the analog signal $x(t)$ with sampling frequencies $f_{s1} = 9kHz$ and $f_{s2} = 14kHz$,which yield $x_1[n]$ and $x_2[n]$, respectively. We sketch the corresponding DTFT spectra. In the same plot we also show the ideal reconstructions $x_1(t)$ and $x_2(t)$.
+    \begin{center}
+      \includegraphics[width=0.8\textwidth]{../Ex01_b_c.png}
+    \end{center}
+  \end{enumerate}
+
 \end{aufgabe} \pagebreak
 
 
 \begin{aufgabe}{} % Exercise 2 ---------------------------------------------------------
 
+  100 values of an analog signal $x(t)$ were measured with a sampling time of 1 ms, leading to the
+discrete-time signal $x[n]$. This time domain signal $x[n]$ is transformed to frequency domain using the DFT/FFT, i.e., a 100-point DFT/FFT is calculated.
+
+  \begin{enumerate}
+    \item \emph{What is the frequency spacing between two neighboring spectral points in the DFT spectrum, i.e., what is the frequency resolution?}
+
+    The frequency spacing $\Delta f$ is $\Delta f f_s / N$. We have $T_s = 1ms$, and we know that $f_s = 1/T_s = 1/0.001s = 1000Hz$, and $N = 100$ samples. This means we have a frequency spacing or frequency resolution of $\Delta f = f_s / N = 1000Hz / 100 = 10Hz$.
+
+    \item \emph{What is the "period" of the DFT spectrum in terms of samples, in terms of frequency, and in terms of normalized angular frequency?}
+
+    The "period" of the DFT spectrum in terms of samples is 100. In terms of frequency it is accordingly 1kHz. And in terms of normalized angular frequency it is $2 \pi$.
+
+  \end{enumerate}
+
+  \emph{We now append zeros to the discrete-time signal $x[n]$ to obtain a signal that has a length of 128 samples.}
+
+  \begin{enumerate}\setcounter{enumi}{2}
+    \item \emph{Why do we append exactly so many zeros, so that a total signal of length $128 = 2^7$ results?}
+    
+    One reason to pad the signal is that it gives an improved frequency resolution, as can be seen by the formula $f_s / N$, where if we increase $N$ we get tighter frequency spacing. Another reason is that the FFT works optimally when the signal length is a power of 2.
+
+    \item \emph{What is the frequency spacing between two neighboring spectral points in the DFT spectrum
+    now?}
+
+    The frequency spacing $\Delta f$ now is $\Delta f_2 = f_s / N_2 = 1000Hz / 128 = 7.8125Hz$.
+
+    \item \emph{How can the changed distance between two neighboring spectral points be interpreted?}
+
+    It can be interpreted as having better frequency resolution in the low frequency range, i.e., being able to detect signals between $10Hz$ and $7.8125Hz$.
+
+  \end{enumerate}
+
 \end{aufgabe} \pagebreak
 
 \begin{aufgabe}{} % Exercise 3 ---------------------------------------------------------
+
+  Our idea was that since high frequencies correspond to edges, and high frequencies are in the middle of the spectrum, we cut out the rest of the spectrum. This means that since our spectrum is a square, we leave a plus shaped section in the middle and set everything else to 0. Below you can see the code that we used to achieve this.
+  
+  To test out different configurations we have a parameter to tune, namely $a$, which defines the size of the combined length squares around the corners that remain (i.e., $298-a$ remains in the middle). We use the fftshift to make the array indexing easier, this way we remove a square in the middle instead of four squares on the sides.
+  
+  We found that $a=130$ achieved similar looking image to the one in the task description.
+
+  \begin{lstlisting}[style=Matlab-editor]
+a = 130;
+val = 0;
+
+fft2d = fftshift(fft2d);
+fft2d(a:298-a, a:298-a) = val;
+fft2d = reshape(fft2d, [298 298]);
+fft2d = fftshift(fft2d);
+  \end{lstlisting}
+
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{../Ex03.png}
+  \end{center}
 
 \end{aufgabe} \pagebreak
 

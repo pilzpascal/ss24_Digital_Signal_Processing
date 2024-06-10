@@ -14,19 +14,21 @@ fft2d = fft2(img);
 % Display the FFT image.
 subplot(132);
 imshow(log(fftshift(abs(fft2d))), []);
-% imshow(log(abs(fft2d)), []);
+imshow(log(abs(fft2d)), []);
 title('2D-FFT');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 
 %Your turn
-a = 130;
+a = 140;
+b = 160;
 val = 0;
 
-fft2d = fftshift(fft2d);
-fft2d(a:298-a, a:298-a) = val;
+% fft2d(a:b, a:b) = val;
+fft2d(1:a, 1:a) = val;
+fft2d(b:298, b:298) = val;
 fft2d = reshape(fft2d, [298 298]);
-fft2d = fftshift(fft2d);
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% IFFT to obtain filtered image
