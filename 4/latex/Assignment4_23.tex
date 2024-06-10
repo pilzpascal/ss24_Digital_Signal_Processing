@@ -127,7 +127,6 @@
 \printpreamble
 
 \begin{aufgabe}{} % Exercise 1 ---------------------------------------------------------
-
 \end{aufgabe} \pagebreak
 
 
@@ -140,6 +139,93 @@
 \end{aufgabe} \pagebreak
 
 \begin{aufgabe}{} % Exercise 4 ---------------------------------------------------------
+  The file dtmf.wav contains a signal consisting of a sequence DTMF signals corresponding to a sequence of randomly chosen symbols.
+
+  \begin{enumerate}
+    \item  Plot a 300 ms long segment of the signal. Given this signal segment in time domain, can you make any statement which
+    symbols are contained in this segment?
+    
+      \includegraphics[width=0.5\textwidth]{../Ex04_a.jpg}
+   
+    It is not easily possible to identify the symbols contained in the segment using just this visualisation since the time domain signal 
+    is a superposition of two sinusoidal audio signals with different frequencies
+
+    \item Compute the spectrum for the whole signal and plot its magnitude.
+    
+      \includegraphics[width=0.5\textwidth]{../Ex04_b.jpg}
+   
+    \pagebreak
+
+    \item Implement short-time Fourier Transform (STFT). Filter the individual blocks using a Hamming window to improve the spectral
+    illustration. Plot a 2d diagram showing the FTBs.
+
+    \includegraphics[width=0.5\textwidth]{../Ex04_c.jpg}
+
+    \item Perform the same steps as in (c), but without multiplying the signal blocks by a Hamming window. 
+    How does the resulting magnitude diagram of the STFT differ to the one computed in (c)? 
+    How is the effect called that causes this difference?
+
+    \includegraphics[width=0.5\textwidth]{../Ex04_d.jpg}
+
+    Diagram (c) shows a clearer distinction between frequencies over time, while diagram (d) looks a bit blurry. 
+    This is caused by the Hamming windowing process and is done intentionaly to reduces spectral leakage.
+
+    \item On basis of the plotted diagram in (c), determine the symbol sequence that has been used
+    for generating the total signal.
+
+    \smallskip
+
+    (0, 0, 4, 3, 7, 3, 2, 2, 4, 6, 8, 5, 6, 8, 0)
+
+    \item
+      \begin{enumerate}
+        \item What is the essential difference between the diagrams plotted in (b) and (c), and what
+        becomes apparent in the diagram in (c) that cannot be observed from the diagram in (b)?
+
+        \smallskip
+        (b) shows the frequency spectrum of the entire signal at once, 
+        while (c) shows how the frequency content of the signal changes over time. 
+        In (c), you can observe the presence of different frequencies at different times, which is not possible in (b).
+
+        \item Give an example for an application of the STFT and describe it briefly.
+        
+        \smallskip
+        Frequencies present in speech signals change rapidly over time.
+        STFT allows us to visualize and understand these changes, 
+        which can be useful in various applications such as speech signal processing.
+
+
+      \end{enumerate}
+        
+
+  \end{enumerate}
+
+\end{aufgabe} \pagebreak
+
+\begin{aufgabe}{} % Exercise 5 ---------------------------------------------------------
+  We have a signal consisting of two cosine oscillations with close frequencies.
+
+  \begin{enumerate}
+    \item Compute the (discrete) spectrum of x and plot a line plot of its magnitude.
+   
+    \includegraphics[width=0.5\textwidth]{../Ex05_a.jpg}
+
+    \item Generate and multiply a Hamming window with the signal x to obtain the signal y. Compute the spectrum of y
+    and display its magnitude
+   
+    \includegraphics[width=0.5\textwidth]{../Ex05_b.jpg}
+
+    \item Compare and interpret the results from (a) and (b)
+    
+    They have similar patterns, however the peaks in spectrum y (signal with hamming) are more 
+    distinct and less spread out since the hamming window leads to a clearer distinction between the close frequencies.
+    
+    \item Experiment with w1 and w2 andfind a setting, where the DFT/FFT
+    yields the exact result. Explain why the DFT/FFT result is exact with the selected settings.
+
+    The best result is achieved when the sin fits into the signal a whole number of times.
+    In this case we need that $w1 * N / (2 * pi)$ and $w2 * N / (2 * pi)$ for some $w1$ and $w2$ will give whole numbers. \\
+  \end{enumerate}
 
 \end{aufgabe} \pagebreak
 
