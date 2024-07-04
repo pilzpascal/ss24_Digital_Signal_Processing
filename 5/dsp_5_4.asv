@@ -65,7 +65,7 @@ n = -N/2:N/2;
 h = (Omega_0/pi) * sinc(n * Omega_0);
 
 % apply window (e.g., hamming, kaiser,...) on h
-w = ones(1,numel(h));   % rectangular window
+w = %ones(1,numel(h));   % rectangular window
 h = h.*w;
 
 % frequency response

@@ -126,7 +126,21 @@
 \begin{document}
 \printpreamble
 
-\begin{aufgabe}{} % Exercise 3 ---------------------------------------------------------
+\begin{aufgabe}{} % Exercise 1 ---------------------------------------------------------
+  Generate three periods of the signal $x[n]=\sum_{i=1}^4 \frac{1}{2 i-1} \sin (2 \pi 0.005(2 i-1) n)$,
+  and load (MATLAB command load) the provided mat file.
+  This file contains the filter coefficients of an FIR filter (b1 and a1) and the filter coefficients of an IIR filter (b2 and a2). 
+  Both filters are designed to fulfil the same design criteria (filter specification). 
+  Filter with both the FIR and the IIR filter the signal $x[n]$ and observe the signal distortion. 
+  Show and discuss the results in your report.
+  
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{../Ex01.jpg}
+  \end{center}
+
+  We can see a consistent phase shift compared to the original signal for FIR and IIR filtered signals.
+  However, this phase shift seems to be more pronounced for the FIR filter, 
+  the IIR filter seems to be closer to the original signal (it seems to preserver the signal better).
 
 \end{aufgabe} \pagebreak
 
@@ -241,6 +255,89 @@
 
 
 \begin{aufgabe}{} % Exercise 4 ---------------------------------------------------------
+
+An analogue signal is sampled with a sampling frequency $f_{\mathrm{s}}=20 \mathrm{kHz}$ and filtered subsequently. \\
+
+\smallskip
+
+The digital lowpass filter should exhibit the following specification:  \\  
+- Passband cutoff frequency: $f_{\text {pass }}=3.4 \mathrm{kHz}$       \\
+- Stopband cutoff frequency: $f_{\text {stop }}=4 \mathrm{kHz}$         \\
+- Allowed ripple in the passband: $\pm 5 \%$                            \\
+- Minimum stopband attenuation: $45 \mathrm{~dB}$
+
+\begin{enumerate}
+  \item Specify the normalized radian frequencies for the passband $\Omega_{\text {pass }}$ and the stopband $\Omega_{\text {stop }}$, the passband tolerance $\delta_1$ and the stopband tolerance $\delta_2$ \\
+    
+    $\Omega_{\text{pass}} = \frac{2\pi f_{\text{pass}}}{f_s} = \frac{2\pi \times 3.4 \text{kHz}}{20 \text{kHz}} \approx 1.0681$ \\
+    $\Omega_{\text{stop}} = \frac{2\pi f_{\text{stop}}}{f_s} = \frac{2\pi \times 4 \text{kHz}}{20 \text{kHz}} \approx 1.2566$ \\
+
+    \smallskip
+
+    $\delta_1 = 0.05$ (given) \\
+    $\delta_2 = 10^{-\frac{45}{20}} \approx 0.0056$
+  \item What is the ideal impulse response $h_{\text {ideal }}[n]$ for the ideal frequency response
+          $$
+          H_{\text {ideal }}(\Omega)=\left\{\begin{array}{ll}
+          1 & \text { for } 0 \leq|\Omega| \leq \Omega_0 \\
+          0 & \text { for } \Omega_0 \leq|\Omega| \leq \pi
+          \end{array},\right.
+          $$
+    $\Omega_0 = \frac{\Omega_{\text{pass}} + \Omega_{\text{stop}}}{2} = \frac{1.0681 + 1.2566}{2} \approx 1.1624$
+
+    $h_{\text{ideal}}[n] = \frac{\Omega_0}{\pi} \operatorname{sinc}(n \Omega_0) = \frac{1.1624}{\pi} \operatorname{sinc}(n \cdot 1.1624)$
+
+  \item Which two measures are necessary to deduce a realizable FIR system of order $N$ from the ideal impulse response $h_{\text {ideal }}[n]$ ?
+          
+    \smallskip
+    Desired frequency response and windowing function.
+  
+  \item How can the decrease to the specified filter order $N$ be interpreted, and which effect on the frequency response of the realizable filter does that have?
+  
+  That means we are using a shorter finite impulse response (FIR) filter. \\
+    For the frequency response, we get: \\
+    - wider main lobes \\
+    - increased side lobe levels \\
+    - broader transition width \\
+
+  \pagebreak
+  \item Design an FIR filter of order $N=20$ with a rectangular window with a corner radian frequency $\Omega_0$. Plot its frequency response and the tolerance scheme in one plot.
+
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{../dsp_5_4.jpg}
+  \end{center}
+
+  \item Is the tolerance scheme being violated? Can the tolerance scheme be fulfilled by increasing the filter order to $N=90$ ? \\
+  
+    \smallskip
+    Yes it exceeds the stopband tolerance, and yes we can see that this is the case below.
+
+    \begin{center}
+      \includegraphics[width=0.8\textwidth]{../dsp_5_4-90.jpg}
+    \end{center}
+
+  \item Now, use a hamming window instead of the rectangular window (for $N=90$ ) and assess the result.
+  
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{../dsp_5_4_g-90.jpg}
+  \end{center}
+
+  We get a sharp transition between passband and stopband (good filter performance).
+
+  \item se the MATLAB filterDesigner to design an elliptic IIR filter fulfilling the above described requirements. What is the order of this filter? What is the disadvantage of this filter?
+    
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{../Ex04_h.png}
+  \end{center}
+  
+  \smallskip
+  
+  The order is 7. Elliptic filters have ripple in both passband and stopbands.
+
+
+\end{enumerate}
+
+
 
 \end{aufgabe} \pagebreak
 
